@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ folder }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" [style.--background]="scanActive ? '#00000000' : '#fff'">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ folder }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+        
+        <ion-row>
+          <ion-col>
+            <ion-button
+              color="primary"
+              expand="full"
+              (click)="startScanner()"
+              [hidden]="scanActive"
+            >
+              <ion-icon name="scan" slot="start"></ion-icon>
+              Scan
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-row class="scanner-buttons" [hidden]="!scanActive">
+    <ion-col class="ion-no-padding">
+      <ion-button expand="full" (click)="stopScanner()">Stop</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>
